@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#120b25">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Happy Birthday Sanjay ✨</title>
+<style>
+:root {
+  --pink: #ff9ed8;
+  --gold: #ffd98b;
+  --ink: #120b25;
+  --soft: #d8cce9;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  color: #fff;
+  font-family: "Segoe UI", system-ui, -apple-system, Inter, sans-serif;
+  background:
+    radial-gradient(ellipse at 50% -10%, #65336e 0, transparent 48%),
+    radial-gradient(ellipse at 0 70%, #25215a 0, transparent 40%),
+    linear-gradient(145deg, #090817, #17102c 55%, #0c1024);
+  transition: background .4s;
+}
+body.light {
+  background: linear-gradient(145deg, #f8e8f5, #e8d5f5 55%, #f0e6ff);
+  color: #2a1a3a;
+}
+body.light .panel { background: #ffffffcc; border-color: #ffffffaa; color: #2a1a3a; }
+body.light .lead, body.light .entry-note, body.light .unlock p, body.light .section-sub, body.light .caption { color: #5a4a6a; }
+body.light input { background: #fff; color: #2a1a3a; border-color: #ddd; }
+body.light #status { color: #c26b9e; }
+body.light footer { color: #7a6a8a; }
+body.light .message { color: #4a2a5a; }
+body.light .float-btn { background: #ffffffee; color: #2a1a3a; border-color: #ddd; }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: .15;
+  background-image: radial-gradient(#fff 0.7px, transparent .7px);
+  background-size: 32px 32px;
+  z-index: 0;
+}
+button, input { font: inherit; }
+main {
+  width: min(100% - 24px, 900px);
+  margin: 20px auto 80px;
+  position: relative;
+  z-index: 1;
+}
+.panel {
+  background: linear-gradient(145deg, #ffffff13, #ffffff06);
+  border: 1px solid #ffffff24;
+  box-shadow: 0 25px 90px #0005, inset 0 1px #ffffff12;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: 28px;
+  padding: clamp(20px, 5vw, 44px);
+  text-align: center;
+}
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #ffffff2c;
+  border-radius: 999px;
+  padding: 7px 14px;
+  color: #f5dff5;
+  font-size: 11px;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+body.light .pill { color: #6a4a7a; border-color: #ddd; }
+.cake {
+  font-size: clamp(52px, 12vw, 72px);
+  margin: 16px 0 6px;
+  filter: drop-shadow(0 8px 20px #ff8dc755);
+  animation: bob 2.8s ease-in-out infinite;
+}
+h1 {
+  font-size: clamp(34px, 9vw, 72px);
+  line-height: 1.05;
+  margin: 8px 0 14px;
+  letter-spacing: -1.5px;
+  background: linear-gradient(100deg, #fff0fa, #ff9ed8 48%, #ffe5a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.name { color: #ffe0a4; -webkit-text-fill-color: #ffe0a4; }
+.lead {
+  max-width: 540px;
+  margin: 0 auto 8px;
+  color: var(--soft);
+  line-height: 1.75;
+  font-size: clamp(15px, 3.5vw, 17px);
+}
+.entry-note {
+  margin-top: 18px;
+  color: #c8badb;
+  font-size: 14px;
+  line-height: 1.6;
+}
+.unlock {
+  margin-top: 26px;
+  padding: 22px 16px 16px;
+  border-radius: 22px;
+  background: #08081755;
+  border: 1px solid #ffffff1c;
+}
+body.light .unlock { background: #f5eef8; border-color: #e0d0e8; }
+.unlock h2 { margin: 0 0 6px; font-size: clamp(20px, 5vw, 24px); }
+.unlock p {
+  margin: 0 auto 16px;
+  color: #c8badb;
+  line-height: 1.55;
+  font-size: 14.5px;
+  max-width: 420px;
+}
+.input-wrap { width: min(100%, 360px); margin: 0 auto; }
+input {
+  width: 100%;
+  padding: 14px 16px;
+  text-align: center;
+  color: white;
+  background: #ffffff0b;
+  border: 1px solid #ffffff32;
+  border-radius: 14px;
+  outline: none;
+  font-size: 16px;
+}
+input:focus {
+  border-color: var(--pink);
+  box-shadow: 0 0 0 3px #ff9ed81c;
+}
+input::placeholder { color: #9f91b6; }
+#status {
+  min-height: 22px;
+  margin: 10px 0 2px;
+  font-size: 13px;
+  color: #ffd1eb;
+}
+.play-area {
+  height: 108px;
+  position: relative;
+  max-width: 480px;
+  margin: 10px auto 0;
+}
+#surpriseBtn {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%);
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  font-weight: 800;
+  font-size: 15px;
+  color: #28122c;
+  background: linear-gradient(120deg, #ff9ed8, #ffe29a);
+  box-shadow: 0 9px 28px #ff85ce35;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: left .15s, top .15s, filter .2s;
+  touch-action: manipulation;
+}
+#surpriseBtn:hover { filter: brightness(1.08); }
+#countdownOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #0a0618f2;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  backdrop-filter: blur(10px);
+}
+#countdownNumber {
+  font-size: clamp(100px, 28vw, 180px);
+  font-weight: 900;
+  line-height: 1;
+  background: linear-gradient(135deg, #ff9ed8, #ffe29a, #ff9ed8);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: pulseCount 1s ease infinite;
+}
+#countdownText {
+  margin-top: 12px;
+  font-size: clamp(16px, 4vw, 22px);
+  color: #ffd1eb;
+  letter-spacing: 2px;
+}
+#flashOverlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  background: #fff;
+  pointer-events: none;
+  opacity: 0;
+}
+#surpriseContent {
+  display: none;
+  margin-top: 28px;
+  animation: reveal .75s ease;
+}
+.section-title {
+  text-align: center;
+  font-size: clamp(22px, 5vw, 30px);
+  margin: 0 0 6px;
+}
+.section-sub {
+  text-align: center;
+  color: #c8badb;
+  margin: 0 0 18px;
+  font-size: 14.5px;
+}
+.slideshow-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid #ffffff30;
+  background: #211833;
+  aspect-ratio: 16/10;
+  max-height: 420px;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1s ease;
+}
+.slide.active { opacity: 1; z-index: 1; }
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+}
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #ffffff40;
+  cursor: pointer;
+  transition: background .3s;
+}
+.dot.active { background: var(--pink); }
+.candle-section {
+  margin: 32px 0;
+  padding: 24px 16px;
+  border-radius: 22px;
+  background: #08081755;
+  border: 1px solid #ffffff1c;
+}
+body.light .candle-section { background: #f5eef8; border-color: #e0d0e8; }
+.cake-area {
+  font-size: 80px;
+  margin: 10px 0;
+  position: relative;
+  display: inline-block;
+}
+.candles {
+  position: absolute;
+  top: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+}
+.candle {
+  font-size: 28px;
+  transition: opacity .4s, transform .4s;
+}
+.candle.blown {
+  opacity: 0;
+  transform: translateY(-20px) scale(0.5);
+}
+.blow-btn {
+  margin-top: 12px;
+  border: 0;
+  border-radius: 999px;
+  padding: 12px 28px;
+  font-weight: 700;
+  font-size: 15px;
+  color: #28122c;
+  background: linear-gradient(120deg, #ff9ed8, #ffe29a);
+  cursor: pointer;
+  box-shadow: 0 6px 20px #ff85ce40;
+  transition: transform .2s;
+}
+.blow-btn:hover { transform: scale(1.05); }
+.blow-btn:disabled {
+  opacity: .6;
+  cursor: default;
+  transform: none;
+}
+.blow-msg {
+  margin-top: 10px;
+  font-size: 15px;
+  color: #a7ffc8;
+  min-height: 22px;
+}
+.wishes { margin: 28px 0; }
+.wish-card {
+  background: linear-gradient(145deg, #ffffff15, #ffffff08);
+  border: 1px solid #ffffff25;
+  border-radius: 16px;
+  padding: 14px 18px;
+  margin: 10px 0;
+  text-align: left;
+  animation: fadeInUp .6s ease both;
+  opacity: 0;
+}
+body.light .wish-card { background: #fff; border-color: #eee; }
+.wish-card.show { opacity: 1; }
+.wish-card .from {
+  font-size: 12px;
+  color: var(--pink);
+  margin-top: 6px;
+  font-weight: 600;
+}
+body.light .wish-card .from { color: #c26b9e; }
+.video-section { margin-top: 28px; }
+.video-section h2 {
+  color: #ffe0a4;
+  font-size: clamp(20px, 4.5vw, 26px);
+  margin-bottom: 12px;
+}
+video {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  background: #000;
+  border-radius: 18px;
+  border: 1px solid #ffb8e5;
+  object-fit: contain;
+}
+.message {
+  line-height: 1.85;
+  color: #ffe1f2;
+  font-size: clamp(15px, 3.5vw, 17px);
+  margin-top: 16px;
+}
+#finalSurprise {
+  display: none;
+  margin-top: 36px;
+  padding: 30px 20px;
+  border-radius: 24px;
+  background: linear-gradient(145deg, #ff9ed822, #ffe29a22);
+  border: 1px solid #ffb8e5;
+  animation: reveal .8s ease;
+}
+#finalSurprise h2 {
+  font-size: clamp(26px, 6vw, 38px);
+  background: linear-gradient(100deg, #fff0fa, #ff9ed8 48%, #ffe5a3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 12px;
+}
+#finalSurprise p {
+  font-size: clamp(16px, 3.8vw, 19px);
+  line-height: 1.8;
+  color: #ffe1f2;
+}
+footer {
+  color: #a99aba;
+  font-size: 11.5px;
+  letter-spacing: 1.4px;
+  text-align: center;
+  margin: 28px 0 0;
+}
+.float-btns {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.float-btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid #ffffff35;
+  background: #1a1235ee;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 20px #0006;
+  backdrop-filter: blur(10px);
+  transition: transform .2s, background .2s;
+  touch-action: manipulation;
+}
+.float-btn:hover { transform: scale(1.1); }
+.float-btn.playing { background: linear-gradient(135deg, #ff9ed8aa, #ffe29aaa); color: #28122c; }
+#fwCanvas {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  pointer-events: none;
+}
+.confetti {
+  position: fixed;
+  top: -30px;
+  z-index: 5;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+.balloon {
+  position: fixed;
+  bottom: -100px;
+  z-index: 0;
+  font-size: 30px;
+  opacity: .45;
+  pointer-events: none;
+  animation: floatUp linear infinite;
+}
+@keyframes bob { 50% { transform: translateY(-10px) rotate(3deg); } }
+@keyframes reveal {
+  from { opacity: 0; transform: translateY(22px) scale(.97); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(700deg); opacity: 0; }
+}
+@keyframes floatUp {
+  to { transform: translateY(-125vh) rotate(25deg); }
+}
+@keyframes pulseCount {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.12); }
+}
+@keyframes flashWhite {
+  0% { opacity: 0; }
+  12% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: none; }
+}
+@media (max-width: 600px) {
+  main { width: min(100% - 14px, 900px); margin: 10px auto 70px; }
+  .panel { border-radius: 22px; padding: 20px 14px; }
+  .cake { font-size: 50px; }
+  .play-area { height: 100px; }
+  #surpriseBtn { font-size: 14px; padding: 13px 18px; }
+  .float-btns { bottom: 14px; right: 14px; }
+  .float-btn { width: 42px; height: 42px; font-size: 16px; }
+  .slideshow-wrap { max-height: 280px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+<main>
+  <section class="panel">
+    <div class="pill">✦ A little birthday magic ✦</div>
+    <div class="cake" aria-hidden="true">🎂</div>
+    <h1>Happy Birthday<br><span class="name">Sanjay!</span></h1>
+    <p class="lead">A day full of smiles, good people, sweet memories, and a surprise made just for you.</p>
+    <p class="entry-note">Enter the secret phrase below to unlock your full birthday experience 🎁</p>
+
+    <section class="unlock">
+      <h2>🤫 The secret surprise</h2>
+      <p>Type the secret phrase to calm the runaway button and start the magic.</p>
+      <div class="input-wrap">
+        <input id="secret" type="text" placeholder="Enter the secret phrase" autocomplete="off" aria-label="Secret phrase" enterkeyhint="go">
+        <div id="status" aria-live="polite">Hint: <strong>5S Sanjay</strong> 💫</div>
+      </div>
+      <div class="play-area" id="playArea">
+        <button id="surpriseBtn" type="button">🎁 Catch Me If You Can!</button>
+      </div>
+    </section>
+
+    <div id="surpriseContent">
+      <!-- Photo Slideshow -->
+      <section style="margin-top:8px">
+        <h2 class="section-title">The moments that matter ✨</h2>
+        <p class="section-sub">Good memories. Great people. One special day.</p>
+        <div class="slideshow-wrap" id="slideshow">
+          <div class="slide active"><img src="photo1.jpg" alt="Birthday cake moment"></div>
+          <div class="slide"><img src="photo2.jpg" alt="Sanjay portrait"></div>
+          <div class="slide"><img src="photo3.jpg" alt="Team celebration"></div>
+        </div>
+        <div class="slide-dots" id="slideDots"></div>
+      </section>
+
+      <!-- Blow the Candle -->
+      <section class="candle-section">
+        <h2 class="section-title">Make a wish 🕯️</h2>
+        <p class="section-sub">Blow out the candles!</p>
+        <div class="cake-area">
+          <div class="candles" id="candles">
+            <span class="candle">🕯️</span>
+            <span class="candle">🕯️</span>
+            <span class="candle">🕯️</span>
+            <span class="candle">🕯️</span>
+            <span class="candle">🕯️</span>
+          </div>
+          🎂
+        </div>
+        <br>
+        <button class="blow-btn" id="blowBtn">💨 Blow the Candles</button>
+        <div class="blow-msg" id="blowMsg"></div>
+      </section>
+
+      <!-- Message Wall -->
+      <section class="wishes">
+        <h2 class="section-title">Birthday Wishes 💌</h2>
+        <p class="section-sub">Messages from people who care about you</p>
+        <div id="wishList"></div>
+      </section>
+
+      <!-- Video -->
+      <section class="video-section">
+        <h2>🎉 Your Birthday Video 🎉</h2>
+        <video id="birthdayVideo" controls playsinline preload="metadata">
+          <source src="sanjay.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+        <p class="message">
+          Happy Birthday, Sanjay! 🥳<br>
+          Wishing you a year full of happiness, success, laughter, and memories worth keeping.<br>
+          Keep smiling, keep growing, and enjoy every moment. You deserve the very best! 💖
+        </p>
+      </section>
+
+      <!-- Final Surprise -->
+      <div id="finalSurprise">
+        <h2>🌟 One Last Wish 🌟</h2>
+        <p>
+          Sanjay, may this new year of your life be filled with endless joy,<br>
+          new adventures, good health, and all the love you give coming back to you tenfold.<br><br>
+          You are special. Stay amazing. Forever. ❤️
+        </p>
+      </div>
+    </div>
+
+    <footer>MADE WITH ❤️ JUST FOR SANJAY</footer>
+  </section>
+</main>
+
+<div id="countdownOverlay">
+  <div id="countdownNumber">10</div>
+  <div id="countdownText">Get ready for the surprise...</div>
+</div>
+<div id="flashOverlay"></div>
+<canvas id="fwCanvas"></canvas>
+
+<div class="float-btns">
+  <button class="float-btn" id="shareBtn" title="Share">📤</button>
+  <button class="float-btn" id="themeBtn" title="Theme">🌙</button>
+  <button class="float-btn" id="musicBtn" title="Music">🎵</button>
+</div>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="https://archive.org/download/happy-birthday-to-you-instrumental/Happy%20Birthday%20Music%20Box%20Loop.mp3" type="audio/mpeg">
+  <source src="birthday-music.mp3" type="audio/mpeg">
+</audio>
+<audio id="voiceMsg" preload="auto">
+  <source src="voice.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const secret     = document.getElementById('secret');
+const button     = document.getElementById('surpriseBtn');
+const area       = document.getElementById('playArea');
+const status     = document.getElementById('status');
+const content    = document.getElementById('surpriseContent');
+const video      = document.getElementById('birthdayVideo');
+const music      = document.getElementById('bgMusic');
+const musicBtn   = document.getElementById('musicBtn');
+const themeBtn   = document.getElementById('themeBtn');
+const shareBtn   = document.getElementById('shareBtn');
+const countdown  = document.getElementById('countdownOverlay');
+const countNum   = document.getElementById('countdownNumber');
+const flash      = document.getElementById('flashOverlay');
+const finalBox   = document.getElementById('finalSurprise');
+const blowBtn    = document.getElementById('blowBtn');
+const blowMsg    = document.getElementById('blowMsg');
+const candles    = document.querySelectorAll('.candle');
+const voice      = document.getElementById('voiceMsg');
+
+let unlocked = false;
+let musicPlaying = false;
+let counting = false;
+let candlesBlown = 0;
+
+function checkSecret() {
+  unlocked = secret.value.trim().toLowerCase() === '5s sanjay';
+  if (unlocked) {
+    button.textContent = '💖 Reveal Your Surprise';
+    button.style.left = '50%';
+    button.style.top = '18px';
+    button.style.transform = 'translateX(-50%)';
+    status.textContent = '✨ Secret accepted! Your surprise is ready.';
+    status.style.color = '#a7ffc8';
+  } else {
+    button.textContent = '🎁 Catch Me If You Can!';
+    status.textContent = 'Not quite! Try the secret phrase again. 🤫';
+    status.style.color = '#ffd1eb';
+  }
+}
+secret.addEventListener('input', checkSecret);
+secret.addEventListener('keydown', e => {
+  if (e.key === 'Enter' && unlocked && !counting) button.click();
+});
+
+function moveButton() {
+  if (unlocked || content.style.display === 'block' || counting) return;
+  const maxX = Math.max(0, area.clientWidth - button.offsetWidth);
+  const maxY = Math.max(0, area.clientHeight - button.offsetHeight);
+  button.style.transform = 'none';
+  button.style.left = Math.random() * maxX + 'px';
+  button.style.top  = Math.random() * maxY + 'px';
+}
+button.addEventListener('pointerenter', moveButton);
+button.addEventListener('pointerdown', e => {
+  if (!unlocked) { e.preventDefault(); moveButton(); }
+});
+
+button.addEventListener('click', () => {
+  if (!unlocked || counting) {
+    if (!unlocked) moveButton();
+    return;
+  }
+  counting = true;
+  button.style.display = 'none';
+  status.textContent = '⏳ Countdown starting...';
+  status.style.color = '#a7ffc8';
+
+  content.style.display = 'block';
+  playMusic();
+  initSlideshow();
+  showWishes();
+
+  let n = 10;
+  countNum.textContent = n;
+  countdown.style.display = 'flex';
+
+  const timer = setInterval(() => {
+    n--;
+    if (n > 0) {
+      countNum.textContent = n;
+      flashScreen();
+    } else {
+      clearInterval(timer);
+      countNum.textContent = '🎉';
+      document.getElementById('countdownText').textContent = 'Happy Birthday Sanjay!';
+      flashScreen();
+      launchFireworks();
+
+      setTimeout(() => {
+        countdown.style.display = 'none';
+        counting = false;
+        makeConfetti(100);
+        voice.play().catch(()=>{});
+        video.currentTime = 0;
+        video.play().catch(() => {
+          status.textContent = 'Your surprise is unlocked! Tap Play on the video.';
+        });
+        setTimeout(() => {
+          video.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 400);
+        status.textContent = '🎊 Happy Birthday, Sanjay!';
+      }, 800);
+    }
+  }, 1000);
+});
+
+function flashScreen() {
+  flash.style.display = 'block';
+  flash.style.animation = 'none';
+  void flash.offsetWidth;
+  flash.style.animation = 'flashWhite 0.55s ease-out forwards';
+  setTimeout(() => {
+    flash.style.display = 'none';
+    flash.style.animation = 'none';
+  }, 600);
+}
+
+function playMusic() {
+  music.volume = 0.4;
+  music.play().then(() => {
+    musicPlaying = true;
+    musicBtn.classList.add('playing');
+    musicBtn.textContent = '🔊';
+  }).catch(() => musicBtn.textContent = '🎵');
+}
+musicBtn.addEventListener('click', () => {
+  if (musicPlaying) {
+    music.pause();
+    musicPlaying = false;
+    musicBtn.classList.remove('playing');
+    musicBtn.textContent = '🔇';
+  } else playMusic();
+});
+
+themeBtn.addEventListener('click', () => {
+  document.body.classList.toggle('light');
+  themeBtn.textContent = document.body.classList.contains('light') ? '☀️' : '🌙';
+});
+
+shareBtn.addEventListener('click', () => {
+  const text = '🎉 Happy Birthday Sanjay! Check out this special surprise I made ❤️';
+  if (navigator.share) {
+    navigator.share({ title: 'Happy Birthday Sanjay', text, url: location.href }).catch(()=>{});
+  } else {
+    navigator.clipboard.writeText(location.href).then(() => {
+      alert('Link copied! Share it with Sanjay 💖');
+    }).catch(() => alert('Share this page with Sanjay!'));
+  }
+});
+
+let slideIndex = 0;
+let slideTimer;
+function initSlideshow() {
+  const slides = document.querySelectorAll('.slide');
+  const dotsWrap = document.getElementById('slideDots');
+  dotsWrap.innerHTML = '';
+  slides.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' active' : '');
+    d.onclick = () => goSlide(i);
+    dotsWrap.appendChild(d);
+  });
+  clearInterval(slideTimer);
+  slideTimer = setInterval(() => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    goSlide(slideIndex);
+  }, 3500);
+}
+function goSlide(i) {
+  slideIndex = i;
+  document.querySelectorAll('.slide').forEach((s, idx) => s.classList.toggle('active', idx === i));
+  document.querySelectorAll('.dot').forEach((d, idx) => d.classList.toggle('active', idx === i));
+}
+
+blowBtn.addEventListener('click', () => {
+  if (candlesBlown >= candles.length) return;
+  candles[candlesBlown].classList.add('blown');
+  candlesBlown++;
+  if (candlesBlown < candles.length) {
+    blowMsg.textContent = (candles.length - candlesBlown) + ' candle' + (candles.length - candlesBlown > 1 ? 's' : '') + ' left...';
+  } else {
+    blowMsg.textContent = '✨ All candles blown! Wish granted! ✨';
+    blowBtn.disabled = true;
+    blowBtn.textContent = '🎉 Wish Made!';
+    makeConfetti(40);
+    flashScreen();
+  }
+});
+
+const wishes = [
+  { text: "Happy Birthday Sanjay! May your day be as awesome as you are 🎂", from: "Your Team" },
+  { text: "Wishing you health, success and endless smiles this year 🌟", from: "Friends" },
+  { text: "Another year older, another year wiser and even more amazing!", from: "Well-wishers" },
+  { text: "May all your dreams come true. Keep shining bright! ✨", from: "Someone special" },
+  { text: "Happy Birthday! Thanks for being such a wonderful person ❤️", from: "With love" }
+];
+function showWishes() {
+  const list = document.getElementById('wishList');
+  list.innerHTML = '';
+  wishes.forEach((w, i) => {
+    const card = document.createElement('div');
+    card.className = 'wish-card';
+    card.innerHTML = '<div>' + w.text + '</div><div class="from">— ' + w.from + '</div>';
+    list.appendChild(card);
+    setTimeout(() => card.classList.add('show'), 300 + i * 280);
+  });
+}
+
+video.addEventListener('ended', () => {
+  finalBox.style.display = 'block';
+  finalBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  makeConfetti(60);
+  launchFireworks();
+});
+
+function makeConfetti(count) {
+  count = count || 80;
+  const pieces = ['🎉','✨','💖','🎊','⭐','🌸','🎈','🥳','💫'];
+  for (let i = 0; i < count; i++) {
+    const item = document.createElement('span');
+    item.className = 'confetti';
+    item.textContent = pieces[Math.floor(Math.random() * pieces.length)];
+    item.style.left = Math.random() * 100 + 'vw';
+    item.style.animationDuration = (2 + Math.random() * 4) + 's';
+    item.style.fontSize = (12 + Math.random() * 18) + 'px';
+    document.body.appendChild(item);
+    setTimeout(() => item.remove(), 6500);
+  }
+}
+
+let lastScroll = 0;
+window.addEventListener('scroll', () => {
+  if (content.style.display !== 'block') return;
+  if (Math.abs(window.scrollY - lastScroll) > 180) {
+    makeConfetti(12);
+    lastScroll = window.scrollY;
+  }
+}, { passive: true });
+
+const canvas = document.getElementById('fwCanvas');
+const ctx = canvas.getContext('2d');
+let fwParticles = [];
+function resizeCanvas() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+function launchFireworks() {
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => {
+      const x = Math.random() * canvas.width * 0.8 + canvas.width * 0.1;
+      const y = Math.random() * canvas.height * 0.4 + 50;
+      createFirework(x, y);
+    }, i * 300);
+  }
+  animateFW();
+}
+function createFirework(x, y) {
+  const colors = ['#ff9ed8','#ffe29a','#a7ffc8','#ff8dc7','#fff','#ffd700'];
+  for (let i = 0; i < 60; i++) {
+    const angle = (Math.PI * 2 * i) / 60;
+    const speed = 2 + Math.random() * 4;
+    fwParticles.push({
+      x: x, y: y,
+      vx: Math.cos(angle) * speed,
+      vy: Math.sin(angle) * speed,
+      life: 60 + Math.random() * 30,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      size: 2 + Math.random() * 2
+    });
+  }
+}
+function animateFW() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  fwParticles = fwParticles.filter(p => {
+    p.x += p.vx;
+    p.y += p.vy;
+    p.vy += 0.06;
+    p.life--;
+    ctx.globalAlpha = Math.max(0, p.life / 80);
+    ctx.fillStyle = p.color;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fill();
+    return p.life > 0;
+  });
+  if (fwParticles.length > 0) requestAnimationFrame(animateFW);
+  else ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+['🎈','💖','🎈','✨','🎈','🎉'].forEach((emoji, i) => {
+  const b = document.createElement('div');
+  b.className = 'balloon';
+  b.textContent = emoji;
+  b.style.left = (i * 17 + 3) + '%';
+  b.style.animationDuration = (13 + i * 2) + 's';
+  b.style.animationDelay = (-i * 3) + 's';
+  document.body.appendChild(b);
+});
+</script>
+</body>
+</html>
